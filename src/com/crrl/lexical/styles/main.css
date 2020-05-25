@@ -1,0 +1,32 @@
+.topPane{
+    -fx-background-color: #2E4393;
+}
+
+.parentPane{
+    -fx-background-color: #F7F5F6;
+}
+
+.btn{
+    -fx-background-color: #2E4393;
+    -fx-background-radius: 25px;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(46, 67, 147, 0.8), 10, 0, 0, 0);
+}
+
+.text-area-container{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 25px;
+    -fx-padding: 15px;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 255, 0.8), 10, 0, 0, 0);
+}
+
+.text-area-container .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area-container .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area-container .scroll-pane .content{
+    -fx-background-color: transparent;
+}
