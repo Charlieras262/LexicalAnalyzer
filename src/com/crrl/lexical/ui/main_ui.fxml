@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #fff;" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.crrl.lexical.controllers.MainController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fff;" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.crrl.lexical.controllers.MainController">
    <children>
       <Pane prefHeight="100.0" prefWidth="600.0" styleClass="topPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="14.0" prefHeight="80.0" prefWidth="98.0" text="Analizador Lexico" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="14.0" prefHeight="100.0" prefWidth="98.0" text="Analizador Lexico" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Verdana Bold" size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="55.0" layoutY="100.0" prefHeight="287.0" prefWidth="540.0" styleClass="text-area-container" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
-      <JFXButton buttonType="RAISED" layoutX="486.0" layoutY="351.0" onMouseClicked="#onAnalyzeClick" prefHeight="35.0" prefWidth="100.0" ripplerFill="#1ba3d0" styleClass="btn" text="Analizar" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="209.0" onMouseClicked="#onAnalyzeClick" prefHeight="35.0" prefWidth="560.0" ripplerFill="#1ba3d0" styleClass="btn" text="Compilar" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <Label alignment="CENTER" layoutX="286.0" layoutY="50.0" text="Ingrese las sentencias separadas por saltos de linea o por punto y coma si es en la misma linea" textFill="#d7d7d7" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <JFXTextField fx:id="expressions" labelFloat="true" layoutX="233.0" layoutY="139.0" prefHeight="50.0" promptText="Ingrese una expresion booleana a compilar" unFocusColor="#9a9a9a" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="Consolas Bold" size="14.0" />
+         </font>
+      </JFXTextField>
+      <Label fx:id="result" layoutX="20.0" layoutY="209.0" text="No se a ingresado ninguna expresion" textFill="#686868" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="Consolas Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding></Label>
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="250.0" onMouseClicked="#onExampleClick" prefHeight="35.0" prefWidth="100.0" ripplerFill="#1ba3d0" styleClass="btn" text="Cadena de ejemplo" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <TabPane fx:id="tabPane" layoutX="7.0" layoutY="386.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

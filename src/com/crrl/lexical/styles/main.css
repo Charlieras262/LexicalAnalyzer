@@ -8,7 +8,7 @@
 
 .btn{
     -fx-background-color: #2E4393;
-    -fx-background-radius: 25px;
+    -fx-background-radius: 5px;
 
     -fx-effect: dropshadow(three-pass-box, rgba(46, 67, 147, 0.8), 10, 0, 0, 0);
 }

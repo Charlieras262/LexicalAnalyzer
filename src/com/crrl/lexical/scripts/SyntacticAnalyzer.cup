@@ -1,0 +1,65 @@
+/*---------------- Imports -------------*/
+
+package com.crrl.lexical.lexer;
+
+import com.crrl.lexical.models.CompileError;
+
+import java_cup.runtime.Symbol;
+import java.util.LinkedList;
+
+// ------------- Parser, Variables, Recover Methods
+
+parser code
+{:
+    public LinkedList<CompileError> errors = new LinkedList<>();
+    public String result = "";
+
+    public void syntax_error(Symbol symbol){
+        String lexeme = symbol.value.toString();
+        int row = symbol.right;
+        int column = symbol.left;
+
+        errors.add(new CompileError(lexeme, "SE", "Caracter no esperado", row, column));
+    }
+
+    public void unrecovered_syntax_error(Symbol symbol){
+        String lexeme = symbol.value.toString();
+        int row = symbol.right;
+        int column = symbol.left;
+
+        errors.add(new CompileError(lexeme, "SE", "Caracter no esperado", row, column));
+    }
+:}
+
+// ----------------- Grammatical Actions
+
+action code
+{:
+
+:}
+
+/* ---------------- Declarations -----------------*/
+
+terminal NOT, AND, OR, P_OPEN, P_CLOSE;
+terminal String B_EXP;
+
+non terminal String INIT, EXP;
+
+// ----------------- Precedence from min to max
+
+precedence left OR;
+precedence left AND;
+precedence left NOT;
+
+start with INIT;
+
+// Semantic Rules
+
+INIT::= EXP:B {: result = B; :};
+
+EXP::= EXP:B1 AND EXP:B2 {: RESULT = String.valueOf(Boolean.parseBoolean(B1) && Boolean.parseBoolean(B2)); :}
+        | EXP:B1 OR EXP:B2 {: RESULT = String.valueOf(Boolean.parseBoolean(B1) || Boolean.parseBoolean(B2)); :}
+        | P_OPEN EXP:B {: RESULT = B; :} P_CLOSE
+        | NOT EXP:B {: RESULT = String.valueOf(!Boolean.parseBoolean(B)); :}
+        | B_EXP:B {: RESULT = B; :}
+        | error EXP | error;
